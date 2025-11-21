@@ -17,3 +17,20 @@ def desviacion(nombre_archivo, nombre_columna):
             return "Error al procesar la columna."
     except Exception:
         return "Error al procesar la columna."
+    
+def percentiles(nombre_archivo, nombre_columna):
+  import pandas as pd
+  import numpy as np
+  try:
+        if nombre_columna not in nombre_archivo.columns:
+            raise ValueError('Error al procesar la columna')
+        
+        
+        percentil_25 = float(np.percentile(nombre_archivo[nombre_columna], 25))
+        percentil_50 = float(np.percentile(nombre_archivo[nombre_columna], 50))
+        percentil_75 = float(np.percentile(nombre_archivo[nombre_columna], 75))
+        
+        return percentil_25, percentil_50, percentil_75
+    
+  except Exception:
+        return 'Error al procesar la columna'
