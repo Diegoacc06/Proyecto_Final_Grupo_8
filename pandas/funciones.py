@@ -9,8 +9,11 @@ def promedios(nombre_archivo,nombre_columna):
         return "Error al procesar la columna."
     
 def desviacion(nombre_archivo, nombre_columna):
-    if nombre_columna in nombre_archivo.columns:
-        desviacion_estandar= float(nombre_archivo[nombre_columna].std())
-        return desviacion_estandar
-    else:
+    try:
+        if nombre_columna in nombre_archivo.columns:
+            desviacion_estandar= float(nombre_archivo[nombre_columna].std())
+            return desviacion_estandar
+        else:
+            return "Error al procesar la columna."
+    except Exception:
         return "Error al procesar la columna."
